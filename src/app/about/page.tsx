@@ -1,3 +1,4 @@
+import ContactSection from "../common/ContactSection/page";
 import Footer from "../common/Footer/page";
 import HeroSectionA from "../common/HeroSectionA/page";
 import LearningPath from "../common/LearningPath/page";
@@ -18,6 +19,9 @@ export default function About() {
 
       {/* Learning Path Section */}
       <LearningPath />
+
+      {/* Connect Section */}
+      <ContactSection />
 
       {/* Footer Section */}
       <Footer />

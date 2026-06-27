@@ -147,6 +147,9 @@ export default function StackSection() {
             fadeOutColor="#f2f2f2"
             ariaLabel="Technology partners"
           />
+          <div className="absolute dev-number text-[5rem] md:text-[6rem] text-black/10 leading-none -translate-y-2 font-jetbrains shrink-0 ml-4 hidden md:block">
+            02
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import DotGrid from "@/components/DotGrid";
 import Link from "next/link";
@@ -127,7 +126,7 @@ export default function Footer() {
             </div>
 
             {/* Quote — hidden on small mobile, shown sm+ */}
-            <div className="hidden sm:block w-full md:w-[260px] lg:w-[300px] text-black/60 text-center md:text-left text-xs md:text-sm leading-relaxed">
+            <div className="hidden sm:block w-full md:w-65 lg:w-75 text-black/60 text-center md:text-left text-xs md:text-sm leading-relaxed">
               "Thanks for visiting. Every project here reflects a journey of
               learning, creativity, and continuous improvement."
             </div>
@@ -152,7 +151,7 @@ export default function Footer() {
           </p>
 
           {/* Big name */}
-          <div className="footer-name text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-semibold font-jetbrains text-(--secondary) text-center">
+          <div className="footer-name text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none font-semibold font-jetbrains text-secondary text-center">
             AndreanGwen
           </div>
         </div>

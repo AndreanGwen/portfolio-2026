@@ -83,11 +83,11 @@ export default function Navbar({ where }: NavbarProps) {
               <Link
                 key={item}
                 href={`${item == "Home" ? "/" : `/${item.toLowerCase()}`}`}
-                className="relative group"
+                className="relative group cursor-none cursor-target"
               >
                 {item}
                 <span
-                  className={`absolute bottom-0 left-0 h-px transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-px transition-all duration-300 cursor-none cursor-target ${
                     isActive
                       ? "w-full bg-primary"
                       : "w-0 group-hover:w-full bg-primary"

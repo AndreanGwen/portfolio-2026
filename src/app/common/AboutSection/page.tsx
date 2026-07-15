@@ -85,7 +85,7 @@ export default function AboutSection() {
               // section.about
             </p>
             <h1 className="about-title text-3xl md:text-5xl font-medium inter">
-              Who I Am
+              Who Am I
             </h1>
           </div>
 

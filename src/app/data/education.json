@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "name": "Certificate of Competence",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1771559431/IMG_20251030_0001_ienpuc.jpg",
+    "category": "Network and Engineering",
+    "description": "A nationally recognized competency certificate issued by the National Professional Certification Agency (BNSP), verifying professional skills and competencies based on Indonesian National Work Competency Standards (SKKNI).",
+    "specifications": [
+      "Networking",
+      "Cisco Packet Tracer",
+      "Linux",
+      "Mikrotik"
+    ],
+    "task": ["Network Infrastructure", "Robotic", "IOT Development"],
+    "year": "2025",
+    "type": "Education"
+  },
+  {
+    "id": 2,
+    "name": "PT. Media Sarana Data",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1771557444/IMG_20251030_0003_awqmyz.jpg",
+    "category": "Software Engineering",
+    "description": "A nationally recognized competency certificate issued by the National Professional Certification Agency (BNSP), verifying professional skills and competencies based on Indonesian National Work Competency Standards (SKKNI).",
+    "specifications": [
+      "Networking",
+      "Cisco Packet Tracer",
+      "Linux",
+      "Mikrotik"
+    ],
+    "task": ["Network Infrastructure", "Robotic", "IOT Development"],
+    "year": "2025",
+    "type": "Education"
+  },
+  {
+    "id": 3,
+    "name": "MERN Stack WPU",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1771562871/Screenshot_2026-02-20_at_11.47.43_eucbfq.png",
+    "category": "Software Engineering",
+    "description": "Completed an intensive MERN Stack course by Web Programming UNPAS, gaining practical experience in building full-stack web applications using MongoDB, Express.js, React, and Node.js.",
+    "specifications": ["MongoDB", "ExpressJS", "React", "NodeJS"],
+    "task": ["Front End", "Backend", "Database", "API"],
+    "year": "2025",
+    "type": "Course"
+  },
+  {
+    "id": 4,
+    "name": "Peduly Volunteer",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1784085435/Peduly_Volunteer-1_iiyd7q.png",
+    "category": "Volunteer Certificate",
+    "description": "Participated as a volunteer in a community iftar event for orphans, contributing to event preparation, coordination, and distribution of meals while promoting teamwork and social responsibility.",
+    "specifications": ["-", "-", "-", "-"],
+    "task": ["-", "-", "-", "-"],
+    "year": "2026",
+    "type": "Achievement"
+  },
+  {
+    "id": 5,
+    "name": "Fundamental Javascript",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1771563107/Screenshot_2026-02-20_at_11.51.42_it3qvi.png",
+    "category": "Software Engineering",
+    "description": "Completed the Fundamental JavaScript for Beginners course by Dunia Coding, learning core JavaScript concepts including variables, data types, operators, conditional statements, loops, functions, arrays, and basic problem-solving techniques for web development.",
+    "specifications": ["Variable", "Array", "Operator", "Condition"],
+    "task": [
+      "Variables & Data Types",
+      "Operators",
+      "Conditional Statements",
+      "Loops",
+      "Functions",
+      "Arrays"
+    ],
+    "year": "2024",
+    "type": "Course"
+  },
+  {
+    "id": 6,
+    "name": "CTI Group",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1784086010/CTI-1_zer3id.png",
+    "category": "Software Engineering",
+    "description": "Participated in the Binus Festival Career Seminar hosted by CTI Group, exploring workplace agility, adaptability, flexibility, and collaboration. The webinar provided insights into professional development, industry expectations, and effective teamwork in the technology sector.",
+    "specifications": [
+      "Agility",
+      "Adaptability",
+      "Flexibility",
+      "Collaboration"
+    ],
+    "task": [
+      "Career Development",
+      "Professional Mindset",
+      "Team Collaboration",
+      "Industry Insights"
+    ],
+    "year": "2026",
+    "type": "Webinar"
+  }
+]

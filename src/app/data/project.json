@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "4Clover Website (4clover.id)",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1782386272/Desain_tanpa_judul_lvi65j.png",
+    "category": "Fullstack Web Development",
+    "description": "4clover is a CRUD website used for content management; 4clover is a video editing agency.",
+    "specifications": ["MongoDB", "ExpressJS", "NextJS", "NodeJS"],
+    "task": ["CMS Website", "CRUD Website", "API Website", "Authentication"],
+    "year": "2026",
+    "type": "Work",
+    "url": "https://www.4clover.id/"
+  },
+  {
+    "id": 2,
+    "name": "API Rest Countries (restcountries.com)",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1776187395/WEB_BNCC_knr7n7.png",
+    "category": "Fullstack Web Development",
+    "description": "A modern full-stack application built with the REST Countries API, enabling users to explore detailed information about countries worldwide. The project demonstrates API integration, authentication, CRUD operations, and responsive interface development using the MERN stack with Next.js.",
+    "specifications": ["MongoDB", "ExpressJS", "NextJS", "NodeJS"],
+    "task": ["CMS Website", "CRUD Website", "API Website"],
+    "year": "2026",
+    "type": "Course Project BNCC",
+    "url": "https://github.com/AndreanGwen/bncc-lnt-project.git"
+  },
+  {
+    "id": 3,
+    "name": "Scrapping Website",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1770816442/WEB_PORTO_5_j1xkwz.png",
+    "category": "Fullstack Web Development",
+    "description": "A web scraping application that automatically collects anime information from multiple online sources using Puppeteer and Cheerio. The project demonstrates automated data extraction, HTML parsing, and structured content management to deliver up-to-date information through a responsive web interface.",
+    "specifications": ["Scrapping", "Cheerio", "Puppeteer", "NodeJS"],
+    "task": ["Video Streaming Website", "Scrapping Website", "HTML Website"],
+    "year": "2026",
+    "type": "Project 1",
+    "url": "https://github.com/AndreanGwen/fe-otakunime.git"
+  },
+  {
+    "id": 4,
+    "name": "OMDB Website",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1770458317/Desain_tanpa_judul_tdwju2.png",
+    "category": "Fullstack Web Development",
+    "description": "A movie discovery web application powered by the OMDb API, allowing users to search and explore detailed information about films and TV series. The project demonstrates API integration, dynamic data rendering, responsive design, and an intuitive user experience for browsing entertainment content.",
+    "specifications": ["ReactJS", "Tailwind", "UI/UX", "NodeJS"],
+    "task": ["Advanced Search", "Responsive Design", "Rest API"],
+    "year": "2025",
+    "type": "Course Project 2",
+    "url": "https://github.com/AndreanGwen/Movie-webPractice.git"
+  },
+  {
+    "id": 5,
+    "name": "Website Controlling Smart Car",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1770268741/WEBSITE_CONTROLLING_SMART_CAR_l36yku.png",
+    "category": "Fullstack Web Development and IoT",
+    "description": "A web-based IoT application designed to remotely control a smart car powered by ESP32. The system enables users to send real-time commands through an intuitive web interface while demonstrating seamless communication between web technologies and embedded hardware using RESTful APIs.",
+    "specifications": ["IoT", "ReactJS", "ESP32", "ArduinoIDE"],
+    "task": [
+      "Real-Time Car Control",
+      "ESP32 Integration",
+      "REST API Communication",
+      "Responsive Dashboard"
+    ],
+    "year": "2025",
+    "type": "Course Project 3",
+    "url": "https://github.com/AndreanGwen/IOT_Development.git"
+  }
+]

@@ -91,5 +91,21 @@
     ],
     "year": "2026",
     "type": "Webinar"
+  },
+  {
+    "id": 7,
+    "name": "HIMTI Binus University",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1786070312/UI_UX_TechFest_cxfhxn.png",
+    "category": "UI/UX Design",
+    "description": "Participated in a UI/UX Design competition held by HIMTI Binus University, showcasing creativity and innovation in designing user-friendly interfaces for various applications and platforms.",
+    "specifications": [
+      "Teamwork",
+      "Adaptability",
+      "Flexibility",
+      "Collaboration"
+    ],
+    "task": ["Responsive Design", "User Experience", "User Interface"],
+    "year": "2026",
+    "type": "Competition"
   }
 ]

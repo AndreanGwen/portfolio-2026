@@ -81,7 +81,7 @@ export default function CardEducation() {
   }, []);
 
   return (
-    <div ref={sectionRef}>
+    <div ref={sectionRef} id="certification">
       <div
         ref={innerRef}
         className="w-full h-fit relative px-6 md:px-20 lg:px-35 py-14 md:py-20 overflow-hidden origin-bottom will-change-transform bg-[#e7e7e7a7] border-b border-black/20"
@@ -90,7 +90,7 @@ export default function CardEducation() {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start relative gap-6 md:gap-0">
           <div className="flex flex-col gap-4 md:gap-8 w-full">
             <h1 className="dev-title text-2xl md:text-4xl font-medium inter text-center md:text-left">
-              My Educations and Achievements
+              My Projects
             </h1>
             <p className="dev-desc w-full md:w-1/2 text-black/50 text-center md:text-left text-xs md:text-[15px]">
               Delivering websites and applications that are fast, scalable, and

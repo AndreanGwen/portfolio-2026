@@ -107,5 +107,21 @@
     "task": ["Responsive Design", "User Experience", "User Interface"],
     "year": "2026",
     "type": "Competition"
+  },
+  {
+    "id": 7,
+    "name": "UX Design IFEST 2026",
+    "image": "https://res.cloudinary.com/dgnnshujm/image/upload/v1791945936/Screenshot_2026-10-14_at_09.45.30_wwa7eo.png",
+    "category": "UI/UX Design",
+    "description": "Participated in a UI/UX Design competition held by IFEST UNPAD, showcasing creativity and innovation in designing user-friendly interfaces for various applications and platforms.",
+    "specifications": [
+      "Teamwork",
+      "Adaptability",
+      "Flexibility",
+      "Collaboration"
+    ],
+    "task": ["Responsive Design", "User Experience", "User Interface"],
+    "year": "2026",
+    "type": "Competition"
   }
 ]

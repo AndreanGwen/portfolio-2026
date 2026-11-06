@@ -3,10 +3,10 @@
 import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DataRain from "@/app/component/DataRain/page";
 import PixelTransition from "@/app/componentLive/PixelTranstition";
 import Link from "next/link";
 import { useStateContext } from "@/context/StateContext";
+import Computer from "anatomy-figures/computer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,49 +104,14 @@ export default function HeroSection() {
           "
         >
           {/* IMAGE */}
-          <div className="hero-image order-1 md:order-2 shrink-0 flex justify-center">
-            <PixelTransition
-              firstContent={
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "grid",
-                    placeItems: "center",
-                    backgroundColor: {
-                      light: "#ffffff",
-                      dark: "#0e0e0e",
-                    }[_dark_mode ? "dark" : "light"],
-                  }}
-                >
-                  <p
-                    style={{
-                      fontWeight: 900,
-                      fontSize: "3rem",
-                      color: {
-                        dark: "#ffffff",
-                        light: "#0e0e0e",
-                      }[_dark_mode ? "dark" : "light"],
-                      textAlign: "center",
-                    }}
-                  >
-                    Hover or touch here!
-                  </p>
-                </div>
-              }
-              secondContent={
-                <img
-                  src="/profile.jpg"
-                  alt="first-photo-andreangwen"
-                  className="w-full h-full object-cover"
-                />
-              }
-              gridSize={20}
-              pixelColor="#ffffff"
-              once={false}
-              animationStepDuration={0.4}
-              className="custom-pixel-card"
-            />
+          <div className="hero-image order-1 md:order-2 shrink-0 flex justify-center items-center gap-5">
+            <Computer
+              theme="dark"
+              style={{
+                width: "100%",
+                maxWidth: "1200px",
+              }}
+            ></Computer>
 
             <div className="hidden md:block">
               <PixelTransition
@@ -180,7 +145,7 @@ export default function HeroSection() {
                 }
                 secondContent={
                   <img
-                    src="/profile.jpg"
+                    src="/profile.png"
                     alt="first-photo-andreangwen"
                     className="w-full h-full object-cover"
                   />

@@ -132,7 +132,7 @@ export default function HeroSectionA() {
               }
               firstContent={
                 <img
-                  src="/profile.jpg"
+                  src="/profile.png"
                   alt="first-photo-andreangwen"
                   className="w-full h-full object-cover"
                 />

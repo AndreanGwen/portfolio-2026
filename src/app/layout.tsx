@@ -5,6 +5,7 @@ import SmoothScroll from "./component/SmoothScroll/page";
 import { cn } from "@/lib/utils";
 import TargetCursor from "@/components/TargetCursor";
 import CursorProvider from "./component/CursorProvider/page";
+import { StateContextProvider } from "@/context/StateContext";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={cn(
         "h-full",
         "antialiased",
@@ -42,9 +44,11 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <CursorProvider />
         <SmoothScroll />
-        {children}
+        <StateContextProvider>
+          <CursorProvider />
+          <div className="min-h-full flex flex-col">{children}</div>
+        </StateContextProvider>
       </body>
     </html>
   );

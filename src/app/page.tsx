@@ -6,10 +6,17 @@ import AboutSection from "./common/AboutSection/page";
 import LatestProjets from "./common/LatestProjects/page";
 import ContactSection from "./common/ContactSection/page";
 import Footer from "./common/Footer/page";
+import { useStateContext } from "@/context/StateContext";
 
 export default function Home() {
+  const { _dark_mode, _handle_set_dark_mode } = useStateContext();
+
   return (
-    <div className="bg-background w-full min-h-screen">
+    <div
+      className={`${
+        _dark_mode ? "bg-zinc-900" : "bg-background"
+      } w-full min-h-screen`}
+    >
       {/* Navbar */}
       <Navbar where="home" />
 

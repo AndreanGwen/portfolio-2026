@@ -13,10 +13,12 @@ import { FiFramer } from "react-icons/fi";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useStateContext } from "@/context/StateContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function StackSection() {
+  const { _dark_mode } = useStateContext();
   const sectionRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -132,7 +134,11 @@ export default function StackSection() {
         className="w-full h-fit relative px-6 md:px-20 lg:px-35 py-20 overflow-hidden origin-bottom will-change-transform"
       >
         <div className="w-full flex flex-col items-center gap-7">
-          <p className="text-xs text-black/40 tracking-wide font-jetbrains text-center">
+          <p
+            className={`text-xs tracking-wide font-jetbrains text-center ${
+              _dark_mode ? "text-white/40" : "text-black/40"
+            }`}
+          >
             // section.stack
           </p>
           <LogoLoop
@@ -144,10 +150,14 @@ export default function StackSection() {
             hoverSpeed={0}
             scaleOnHover
             fadeOut
-            fadeOutColor="#f2f2f2"
+            fadeOutColor={_dark_mode ? "#18181b" : "#f2f2f2"}
             ariaLabel="Technology partners"
           />
-          <div className="absolute dev-number text-[5rem] md:text-[6rem] text-black/10 leading-none -translate-y-2 font-jetbrains shrink-0 ml-4 hidden md:block">
+          <div
+            className={`absolute dev-number text-[5rem] md:text-[6rem] leading-none -translate-y-2 font-jetbrains shrink-0 ml-4 hidden md:block ${
+              _dark_mode ? "text-white/10" : "text-black/10"
+            }`}
+          >
             02
           </div>
         </div>

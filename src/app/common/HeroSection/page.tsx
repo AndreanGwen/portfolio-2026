@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DataRain from "@/app/component/DataRain/page";
 import PixelTransition from "@/app/componentLive/PixelTranstition";
 import Link from "next/link";
+import { useStateContext } from "@/context/StateContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,13 +82,18 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  const { _dark_mode, _handle_set_dark_mode } = useStateContext();
   return (
     <section ref={sectionRef} className="w-full">
       <div
         ref={innerRef}
-        className="relative overflow-hidden min-h-171 border-b border-black/20 origin-bottom will-change-transform"
+        className={`relative overflow-hidden min-h-171 border-b origin-bottom will-change-transform ${
+          _dark_mode
+            ? "bg-zinc-900 border-white/10"
+            : "bg-zinc-50 border-black/20"
+        }`}
       >
-        <DataRain />
+        {/* <DataRain /> */}
 
         <div
           ref={heroRef}
@@ -107,14 +113,20 @@ export default function HeroSection() {
                     height: "100%",
                     display: "grid",
                     placeItems: "center",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: {
+                      light: "#ffffff",
+                      dark: "#0e0e0e",
+                    }[_dark_mode ? "dark" : "light"],
                   }}
                 >
                   <p
                     style={{
                       fontWeight: 900,
                       fontSize: "3rem",
-                      color: "#000000",
+                      color: {
+                        dark: "#ffffff",
+                        light: "#0e0e0e",
+                      }[_dark_mode ? "dark" : "light"],
                       textAlign: "center",
                     }}
                   >
@@ -145,14 +157,20 @@ export default function HeroSection() {
                       height: "100%",
                       display: "grid",
                       placeItems: "center",
-                      backgroundColor: "#ffffff",
+                      backgroundColor: {
+                        light: "#ffffff",
+                        dark: "#0e0e0e",
+                      }[_dark_mode ? "dark" : "light"],
                     }}
                   >
                     <p
                       style={{
                         fontWeight: 900,
                         fontSize: "3rem",
-                        color: "#000000",
+                        color: {
+                          light: "#ffffff",
+                          dark: "#0e0e0e",
+                        }[_dark_mode ? "light" : "dark"],
                         textAlign: "center",
                       }}
                     >
@@ -182,27 +200,63 @@ export default function HeroSection() {
               // npm run dev
             </p>
 
-            <p className="hero-animate text-xs mb-8 tracking-wide">
-              <span className="text-primary">2 years</span>
-              <span className="text-gray-400 mx-2">·</span>
-              <span className="text-primary underline cursor-pointer">
+            <p
+              className={`${
+                _dark_mode ? "text-white" : "text-gray-400 mx-2"
+              }hero-animate text-xs mb-8 tracking-wide`}
+            >
+              <span className={`${_dark_mode ? "text-white" : "text-primary"}`}>
+                2 years
+              </span>
+              <span
+                className={`${
+                  _dark_mode ? "text-white mx-2" : "text-gray-400 mx-2"
+                }`}
+              >
+                ·
+              </span>
+              <span
+                className={`${
+                  _dark_mode ? "text-white" : "text-primary"
+                } underline cursor-pointer`}
+              >
                 12 products
               </span>
-              <span className="text-gray-400 mx-2">·</span>
-              <span className="text-primary">1 teams scaled</span>
+              <span
+                className={`${
+                  _dark_mode ? "text-white mx-2" : "text-gray-400 mx-2"
+                }`}
+              >
+                ·
+              </span>
+              <span className={`${_dark_mode ? "text-white" : "text-primary"}`}>
+                1 teams scaled
+              </span>
             </p>
 
-            <h1 className="hero-animate text-4xl md:text-5xl font-semibold leading-none text-gray-900 mb-4 inter">
+            <h1
+              className={`hero-animate text-4xl md:text-5xl font-semibold leading-none ${
+                _dark_mode ? "text-white/70" : "text-gray-900"
+              } mb-4 inter`}
+            >
               Hello, I'm
               <br />
               <span ref={titleRef}>AndreanGwen</span>
             </h1>
 
-            <p className="hero-animate text-sm text-gray-500 tracking-[0.18em] uppercase mb-5">
+            <p
+              className={`hero-animate text-sm ${
+                _dark_mode ? "text-white/50" : "text-gray-500"
+              } tracking-[0.18em] uppercase mb-5`}
+            >
               Junior Full Stack Web Developer
             </p>
 
-            <p className="hero-animate text-[15px] text-gray-500 leading-relaxed mb-9 max-w-xl">
+            <p
+              className={`hero-animate text-[15px] ${
+                _dark_mode ? "text-white/50" : "text-gray-500"
+              }  leading-relaxed mb-9 max-w-xl`}
+            >
               Junior Web Developer focused on MERN Stack development and IoT
               projects. Experienced in creating modern web applications and
               smart solutions through hardware-software integration.
@@ -211,14 +265,22 @@ export default function HeroSection() {
             <div className="hero-animate flex gap-4 flex-wrap justify-center md:justify-start">
               <Link
                 href="/project"
-                className="px-7 py-3 bg-primary text-white text-sm font-medium transition-colors font-jetbrains cursor-target cursor-none"
+                className={`px-7 py-3 text-white text-sm font-medium transition-colors font-jetbrains cursor-target cursor-none ${
+                  _dark_mode
+                    ? "bg-white/20 hover:bg-white/30"
+                    : "bg-primary hover:opacity-90"
+                }`}
               >
                 See my project
               </Link>
 
               <Link
                 href="/resume"
-                className="px-7 py-3 border border-gray-800 text-gray-800 text-sm font-medium hover:bg-gray-100 transition-colors font-jetbrains cursor-target cursor-none"
+                className={`px-7 py-3 border text-sm font-medium transition-colors font-jetbrains cursor-target cursor-none ${
+                  _dark_mode
+                    ? "border-white/30 text-white hover:bg-white/10"
+                    : "border-gray-800 text-gray-800 hover:bg-gray-100"
+                }`}
               >
                 Check my resume
               </Link>

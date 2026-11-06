@@ -1,14 +1,18 @@
 "use client";
+import { useStateContext } from "@/context/StateContext";
 import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { CiDark, CiLight } from "react-icons/ci";
 
 type NavbarProps = {
   where?: string;
 };
 
 export default function Navbar({ where }: NavbarProps) {
-  const navbarRef = useRef<HTMLHeadingElement>(null);
+  const { _dark_mode, _handle_set_dark_mode } = useStateContext();
+
+  const navbarRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -60,37 +64,60 @@ export default function Navbar({ where }: NavbarProps) {
 
   const navItems = ["Home", "About", "Education", "Project", "Resume"];
 
+  // Warna yang dipakai ulang
+  const textColor = _dark_mode ? "text-white" : "text-gray-900";
+  const accentBg = _dark_mode ? "bg-[#ff7500]" : "bg-primary";
+  const ThemeIcon = _dark_mode ? CiLight : CiDark;
+
   return (
     <>
       <div
         ref={navbarRef}
-        className="w-full h-14 border-b border-black/10 fixed top-0 z-999 flex items-center justify-between px-7.5 text-[13px] text-(--font-secodary) backdrop-blur-sm"
+        className={`w-full h-14 border-b fixed top-0 z-999 flex items-center justify-between px-7.5 text-[13px] backdrop-blur-md transition-colors ${
+          _dark_mode
+            ? "border-white/10 bg-zinc-900/70 text-white"
+            : "border-black/10 bg-white/60 text-gray-900"
+        }`}
       >
         {/* Logo */}
-        <a
-          href="/"
-          className="font-jetbrains hover:text-primary flex items-center relative group"
-        >
-          AndreanGwen
-          <span className="absolute bottom-0 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-        </a>
+        <div className="flex gap-2 items-center">
+          <a
+            href="/"
+            className={`font-jetbrains flex items-center relative group transition-colors ${textColor} ${
+              _dark_mode ? "hover:text-[#ff7500]" : "hover:text-primary"
+            }`}
+          >
+            AndreanGwen
+            <span
+              className={`absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${accentBg}`}
+            />
+          </a>
+          <button
+            type="button"
+            onClick={_handle_set_dark_mode}
+            aria-label="Toggle dark mode"
+            className={`cursor-target cursor-none flex items-center ${textColor}`}
+          >
+            <ThemeIcon size={23} />
+          </button>
+        </div>
 
         {/* Desktop nav */}
-        <div className="font-jetbrains hidden md:flex items-center gap-7">
+        <div
+          className={`font-jetbrains hidden md:flex items-center gap-7 ${textColor}`}
+        >
           {navItems.map((item) => {
             const isActive = where?.toLowerCase() === item.toLowerCase();
             return (
               <Link
                 key={item}
-                href={`${item == "Home" ? "/" : `/${item.toLowerCase()}`}`}
+                href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 className="relative group cursor-none cursor-target"
               >
                 {item}
                 <span
-                  className={`absolute bottom-0 left-0 h-px transition-all duration-300 cursor-none cursor-target ${
-                    isActive
-                      ? "w-full bg-primary"
-                      : "w-0 group-hover:w-full bg-primary"
+                  className={`absolute bottom-0 left-0 h-px transition-all duration-300 ${accentBg} ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
               </Link>
@@ -102,7 +129,7 @@ export default function Navbar({ where }: NavbarProps) {
         <button
           id="hamburger-btn"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 cursor-pointer"
+          className={`md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 cursor-pointer ${textColor}`}
           aria-label="Toggle menu"
         >
           <span
@@ -127,7 +154,11 @@ export default function Navbar({ where }: NavbarProps) {
       {open && (
         <div
           ref={modalRef}
-          className="fixed top-16 right-4 z-1000 w-52 bg-white border border-black/10 rounded-xl shadow-lg overflow-hidden md:hidden"
+          className={`fixed top-16 right-4 z-1000 w-52 border rounded-xl shadow-lg overflow-hidden md:hidden ${
+            _dark_mode
+              ? "bg-zinc-900 border-white/10"
+              : "bg-white border-black/10"
+          }`}
         >
           <div className="flex flex-col py-2">
             {navItems.map((item) => {
@@ -135,16 +166,22 @@ export default function Navbar({ where }: NavbarProps) {
               return (
                 <a
                   key={item}
-                  href={`${item == "Home" ? "/" : `/${item.toLowerCase()}`}`}
+                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   onClick={() => setOpen(false)}
                   className={`font-jetbrains px-5 py-3 text-[13px] transition-colors duration-150 relative flex items-center gap-2 ${
                     isActive
-                      ? "text-primary"
-                      : "text-(--font-secodary) hover:bg-black/5"
+                      ? _dark_mode
+                        ? "text-[#ff7500]"
+                        : "text-primary"
+                      : _dark_mode
+                      ? "text-white/80 hover:bg-white/10"
+                      : "text-gray-700 hover:bg-black/5"
                   }`}
                 >
                   {isActive && (
-                    <span className="w-1 h-1 rounded-full bg-primary shrink-0" />
+                    <span
+                      className={`w-1 h-1 rounded-full shrink-0 ${accentBg}`}
+                    />
                   )}
                   {item}
                 </a>

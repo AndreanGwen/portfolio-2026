@@ -1,29 +1,26 @@
+"use client";
 import ContactSection from "../common/ContactSection/page";
 import Footer from "../common/Footer/page";
 import HeroSectionA from "../common/HeroSectionA/page";
 import LearningPath from "../common/LearningPath/page";
 import Navbar from "../common/Navbar/page";
 import StackSection from "../common/StackSection/page";
+import { useStateContext } from "@/context/StateContext";
 
 export default function About() {
+  const { _dark_mode } = useStateContext();
+
   return (
-    <div className="bg-background w-full min-h-screen">
-      {/* Navbar */}
+    <div
+      className={`${
+        _dark_mode ? "bg-zinc-900" : "bg-background"
+      } w-full min-h-screen`}
+    >
       <Navbar where="about" />
-
-      {/* HeroSectionA */}
       <HeroSectionA />
-
-      {/* Stack Section */}
       <StackSection />
-
-      {/* Learning Path Section */}
       <LearningPath />
-
-      {/* Connect Section */}
       <ContactSection />
-
-      {/* Footer Section */}
       <Footer />
     </div>
   );

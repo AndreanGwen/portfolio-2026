@@ -5,10 +5,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Download, Link } from "lucide-react";
+import { useStateContext } from "@/context/StateContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CVSection() {
+  const { _dark_mode } = useStateContext();
   const sectionRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +41,11 @@ export default function CVSection() {
           <a
             href="_cv.pdf"
             download="_cv.pdf"
-            className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-black/80"
+            className={`inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-medium transition ${
+              _dark_mode
+                ? "bg-white text-zinc-900 hover:bg-white/80"
+                : "bg-black text-white hover:bg-black/80"
+            }`}
           >
             <Download size={17} />
             Download CV
@@ -48,14 +54,20 @@ export default function CVSection() {
             href="_cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-medium text-white transition hover:bg-white/50 border-black border-2"
+            className={`inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-medium border-2 transition ${
+              _dark_mode
+                ? "bg-zinc-900 text-white border-white/30 hover:bg-white/10"
+                : "bg-white text-white border-black hover:bg-white/50"
+            }`}
           >
-            <Link size={17} color="black" />
+            <Link size={17} color={_dark_mode ? "white" : "black"} />
           </a>
         </div>
         <div
           ref={innerRef}
-          className="mx-auto w-full max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-208 overflow-hidden bg-white shadow-2xl pointer-events-auto"
+          className={`mx-auto w-full max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-208 overflow-hidden shadow-2xl pointer-events-auto ${
+            _dark_mode ? "bg-zinc-800" : "bg-white"
+          }`}
         >
           <iframe
             src={`_cv.pdf#toolbar=0`}

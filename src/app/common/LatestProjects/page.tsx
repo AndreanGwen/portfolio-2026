@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { useStateContext } from "@/context/StateContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,6 +105,8 @@ export default function LatestProjects() {
     return () => ctx.revert();
   }, []);
 
+  const { _dark_mode } = useStateContext();
+
   return (
     <div ref={sectionRef} className="w-full">
       <div
@@ -113,10 +116,11 @@ export default function LatestProjects() {
         {/* DotGrid background */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <DotGrid
+            key={_dark_mode ? "dark" : "light"}
             dotSize={2}
             gap={30}
-            baseColor="#c4c4c4"
-            activeColor="#000000"
+            baseColor={_dark_mode ? "#3f3f46" : "#c4c4c4"}
+            activeColor={_dark_mode ? "#ffffff" : "#000000"}
             proximity={120}
             shockRadius={250}
             shockStrength={5}
@@ -134,17 +138,25 @@ export default function LatestProjects() {
                 // section.project
               </p>
               <div className="flex flex-col gap-8">
-                <h1 className="lp-title text-2xl md:text-5xl font-medium inter text-center md:text-left">
+                <h1
+                  className={`${_dark_mode ? "text-white/70" : "text-black"} lp-title text-2xl md:text-5xl font-medium inter text-center md:text-left`}
+                >
                   Latest Project
                 </h1>
-                <p className="lp-desc w-full md:w-3/4 text-black/50 text-center md:text-left text-xs md:text-[15px]">
+                <p
+                  className={`${_dark_mode ? "text-white/70" : "text-black/50"} lp-desc w-full md:w-3/4 text-center md:text-left text-lg md:text-[15px]`}
+                >
                   A collection of recent projects that demonstrate my skills in
                   web development and IoT engineering. Built with a focus on
                   performance, usability, and real-world impact.
                 </p>
               </div>
             </div>
-            <div className="text-[5rem] md:text-[6rem] text-black/10 leading-none -translate-y-2 font-jetbrains shrink-0 ml-4 hidden md:block">
+            <div
+              className={`text-[5rem] md:text-[6rem] leading-none -translate-y-2 font-jetbrains shrink-0 ml-4 hidden md:block ${
+                _dark_mode ? "text-white/10" : "text-black/10"
+              }`}
+            >
               03
             </div>
           </div>
@@ -157,15 +169,24 @@ export default function LatestProjects() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cursor-target lp-card w-full min-h-130 flex flex-col border border-black/20 hover:border-black/50 group overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02] bg-white/60 cursor-none"
+                className={`cursor-target lp-card w-full min-h-130 flex flex-col border group overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02] cursor-none ${
+                  _dark_mode
+                    ? "border-white/10 hover:border-white/40 bg-zinc-900/80"
+                    : "border-black/20 hover:border-black/50 bg-white/60"
+                }`}
               >
                 {/* Image */}
-                <div className="w-full h-56 bg-gray-500/20 flex items-center justify-center overflow-hidden">
+                <div
+                  className={`w-full h-56 flex items-center justify-center overflow-hidden ${
+                    _dark_mode ? "bg-white/5" : "bg-gray-500/20"
+                  }`}
+                >
                   <div className="w-[80%] h-[90%] relative transition-transform duration-500 ease-out group-hover:scale-105">
                     <Image
                       src={project.image}
                       alt={project.imageAlt}
                       fill
+                      sizes="(max-width: 768px) 80vw, (max-width: 1280px) 40vw, 25vw"
                       className="object-cover object-top"
                     />
                   </div>
@@ -175,19 +196,37 @@ export default function LatestProjects() {
                 <div className="flex-1 px-7 py-6 flex flex-col gap-4 justify-between">
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-2">
-                      <div className="px-2 w-fit border-black/10 bg-black/10 border text-sm font-jetbrains">
+                      <div
+                        className={`px-2 w-fit border text-sm font-jetbrains ${
+                          _dark_mode
+                            ? "border-white/10 bg-white/10 text-white/80"
+                            : "border-black/10 bg-black/10 text-gray-900"
+                        }`}
+                      >
                         {project.year}
                       </div>
-                      <span className="text-sm font-jetbrains">
+                      <span
+                        className={`text-sm font-jetbrains ${
+                          _dark_mode ? "text-white/70" : "text-gray-900"
+                        }`}
+                      >
                         {project.role}
                       </span>
                     </div>
 
-                    <h1 className="text-xl font-semibold inter">
+                    <h1
+                      className={`text-xl font-semibold inter ${
+                        _dark_mode ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       {project.title}
                     </h1>
 
-                    <p className="text-sm text-black/50">
+                    <p
+                      className={`text-sm ${
+                        _dark_mode ? "text-white/50" : "text-black/50"
+                      }`}
+                    >
                       {project.description}
                     </p>
 
@@ -195,7 +234,11 @@ export default function LatestProjects() {
                       {project.tags.map((tag, i) => (
                         <div
                           key={i}
-                          className="px-3 py-1 w-fit rounded-full border-black/10 bg-black/10 border text-xs font-jetbrains"
+                          className={`px-3 py-1 w-fit rounded-full border text-xs font-jetbrains ${
+                            _dark_mode
+                              ? "border-white/10 bg-white/10 text-white/70"
+                              : "border-black/10 bg-black/10 text-gray-900"
+                          }`}
                         >
                           {tag}
                         </div>
@@ -203,7 +246,11 @@ export default function LatestProjects() {
                     </div>
                   </div>
 
-                  <div className="text-xs font-semibold font-jetbrains flex items-center gap-3 mt-2">
+                  <div
+                    className={`text-xs font-semibold font-jetbrains flex items-center gap-3 mt-2 ${
+                      _dark_mode ? "text-white/80" : "text-gray-900"
+                    }`}
+                  >
                     <span>View project</span>
                     <MoveRight size={16} />
                   </div>

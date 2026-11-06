@@ -6,10 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DataRain from "@/app/component/DataRain/page";
 import PixelTransition from "@/app/componentLive/PixelTranstition";
 import CountUp from "@/components/CountUp";
+import { useStateContext } from "@/context/StateContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSectionA() {
+  const { _dark_mode } = useStateContext();
   const heroRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -91,10 +93,10 @@ export default function HeroSectionA() {
     <section ref={sectionRef} className="w-full">
       <div
         ref={innerRef}
-        className="relative overflow-hidden h-fit border-b border-black/20 origin-bottom will-change-transform"
+        className={`relative overflow-hidden h-fit border-b origin-bottom will-change-transform ${
+          _dark_mode ? "bg-zinc-900/50 border-white/10" : "border-black/20"
+        }`}
       >
-        <DataRain />
-
         <div
           ref={heroRef}
           className="
@@ -113,14 +115,14 @@ export default function HeroSectionA() {
                     height: "100%",
                     display: "grid",
                     placeItems: "center",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: _dark_mode ? "#0e0e0e" : "#ffffff",
                   }}
                 >
                   <p
                     style={{
                       fontWeight: 900,
                       fontSize: "3rem",
-                      color: "#000000",
+                      color: _dark_mode ? "#ffffff" : "#000000",
                       textAlign: "center",
                     }}
                   >
@@ -151,14 +153,14 @@ export default function HeroSectionA() {
                       height: "100%",
                       display: "grid",
                       placeItems: "center",
-                      backgroundColor: "#ffffff",
+                      backgroundColor: _dark_mode ? "#0e0e0e" : "#ffffff",
                     }}
                   >
                     <p
                       style={{
                         fontWeight: 900,
                         fontSize: "3rem",
-                        color: "#000000",
+                        color: _dark_mode ? "#ffffff" : "#000000",
                         textAlign: "center",
                       }}
                     >
@@ -188,17 +190,29 @@ export default function HeroSectionA() {
               // page.about
             </p>
 
-            <h1 className="hero-animate text-4xl md:text-5xl font-semibold leading-none text-gray-900 mb-4 inter">
+            <h1
+              className={`hero-animate text-4xl md:text-5xl font-semibold leading-none mb-4 inter ${
+                _dark_mode ? "text-white/70" : "text-gray-900"
+              }`}
+            >
               Hello, I'm
               <br />
               <span ref={titleRef}>AndreanGwen</span>
             </h1>
 
-            <p className="hero-animate text-sm text-gray-500 tracking-[0.18em] uppercase mb-5">
+            <p
+              className={`hero-animate text-sm tracking-[0.18em] uppercase mb-5 ${
+                _dark_mode ? "text-white/50" : "text-gray-500"
+              }`}
+            >
               Junior Full Stack Web Developer
             </p>
 
-            <p className="hero-animate text-[15px] text-gray-500 leading-relaxed mb-9 max-w-xl">
+            <p
+              className={`hero-animate text-[15px] leading-relaxed mb-9 max-w-xl ${
+                _dark_mode ? "text-white/50" : "text-gray-500"
+              }`}
+            >
               I'm AndreanGwen, a Computer Science student at Binus University
               specializing in web development and IoT development. I enjoy
               building modern web applications, developing smart connected
@@ -208,7 +222,11 @@ export default function HeroSectionA() {
               users.
             </p>
 
-            <p className="hero-animate text-[15px] text-gray-500 leading-relaxed mb-9 max-w-xl">
+            <p
+              className={`hero-animate text-[15px] leading-relaxed mb-9 max-w-xl ${
+                _dark_mode ? "text-white/50" : "text-gray-500"
+              }`}
+            >
               Junior Web Developer focused on MERN Stack development and IoT
               projects. Experienced in creating modern web applications and
               smart solutions through hardware-software integration.
@@ -220,7 +238,11 @@ export default function HeroSectionA() {
                   key={i}
                   className="hero-animate flex flex-col items-center justify-center gap-1 py-6 px-4"
                 >
-                  <span className="text-3xl md:text-4xl font-semibold inter">
+                  <span
+                    className={`text-3xl md:text-4xl font-semibold inter ${
+                      _dark_mode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     <CountUp
                       from={stat.from}
                       to={stat.to}
@@ -232,7 +254,11 @@ export default function HeroSectionA() {
                     />
                     <span className="text-primary">{stat.suffix}</span>
                   </span>
-                  <span className="font-jetbrains text-xs text-black/50 text-center">
+                  <span
+                    className={`font-jetbrains text-xs text-center ${
+                      _dark_mode ? "text-white/50" : "text-black/50"
+                    }`}
+                  >
                     {stat.label}
                   </span>
                 </div>

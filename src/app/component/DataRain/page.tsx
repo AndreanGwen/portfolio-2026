@@ -1,5 +1,6 @@
 "use client";
 
+import { useStateContext } from "@/context/StateContext";
 import { useEffect, useRef } from "react";
 
 const CHARS = "0123456789∑∂αβγ/+−×↓↗→←·∞";
@@ -27,16 +28,24 @@ type DataRainBgProps = {
  *   trailColor- RGB string "r,g,b" for the trail (opacity is auto-calculated)
  *   bgColor   - background to fade into, as "r,g,b,a" string (match your section bg)
  */
+
 export default function DataRain({
   charSet = CHARS,
   speed = 0.3,
   headColor = "rgba(30,30,30,0.22)",
   trailColor = "30,30,30",
-  bgColor = "242,242,242,0.24", // #f2f2f2 with low alpha for trail fade
+  bgColor,
 }: DataRainBgProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
+  const { _dark_mode, _handle_set_dark_mode } = useStateContext();
+  const effectiveBgColor =
+    bgColor ?? (_dark_mode ? "0,0,0,0.2" : "242,242,242,0.2");
+  const effectiveHeadColor = _dark_mode
+    ? "rgba(255,255,255,0.8)"
+    : "rgba(30,30,30,0.7)";
+  const effectiveTrailColor = _dark_mode ? "220,220,220" : "30,30,30";
 
   useEffect(() => {
     const canvasEl = canvasRef.current;
@@ -79,7 +88,7 @@ export default function DataRain({
 
     function draw() {
       // Fade previous frame — this creates the trail dissolve effect
-      ctx.fillStyle = `rgba(${bgColor})`;
+      ctx.fillStyle = `rgba(${effectiveBgColor})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${FONT_SIZE}px "Courier New", monospace`;
@@ -103,11 +112,11 @@ export default function DataRain({
           if (yOff < 0 || yOff > canvas.height) continue;
 
           if (t === TRAIL_LEN - 1) {
-            ctx.fillStyle = headColor;
+            ctx.fillStyle = effectiveHeadColor;
           } else {
             const ratio = t / (TRAIL_LEN - 1);
             const op = (0.08 + ratio * 0.08).toFixed(3);
-            ctx.fillStyle = `rgba(${trailColor},${op})`;
+            ctx.fillStyle = `rgba(${effectiveTrailColor},${op})`;
           }
           ctx.fillText(trails[i][t], x, yOff);
         }
@@ -135,7 +144,13 @@ export default function DataRain({
       }
       ro.disconnect();
     };
-  }, [charSet, speed, headColor, trailColor, bgColor]);
+  }, [
+    charSet,
+    speed,
+    effectiveHeadColor,
+    effectiveTrailColor,
+    effectiveBgColor,
+  ]);
 
   return (
     <div

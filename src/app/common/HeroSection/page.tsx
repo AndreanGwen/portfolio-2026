@@ -106,7 +106,7 @@ export default function HeroSection() {
           {/* IMAGE */}
           <div className="hero-image order-1 md:order-2 shrink-0 flex justify-center items-center gap-5">
             <Computer
-              theme="dark"
+              theme={_dark_mode ? "dark" : "light"}
               style={{
                 width: "100%",
                 maxWidth: "1200px",

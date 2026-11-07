@@ -100,7 +100,7 @@ export default function CardEducation() {
                 _dark_mode ? "text-white/70" : "text-gray-900"
               }`}
             >
-              My Projects
+              My Educations & Certifications
             </h1>
             <p
               className={`dev-desc w-full md:w-1/2 text-center md:text-left text-xs md:text-[15px] ${

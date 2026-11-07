@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PixelTransition from "@/app/componentLive/PixelTranstition";
@@ -93,8 +93,6 @@ export default function HeroSection() {
             : "bg-zinc-50 border-black/20"
         }`}
       >
-        {/* <DataRain /> */}
-
         <div
           ref={heroRef}
           className="
